@@ -1,0 +1,24 @@
+                                                                            List of databases
+                              Name                               |  Owner   | Encoding |   Collate   |    Ctype    | ICU Locale | Locale Provider |   Access privileges   
+-----------------------------------------------------------------+----------+----------+-------------+-------------+------------+-----------------+-----------------------
+ DBrpg                                                           | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ _aiven                                                          | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | =T/postgres          +
+                                                                 |          |          |             |             |            |                 | postgres=CTc/postgres
+ dbClassiWeb                                                     | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbCortes                                                        | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbEmpresa                                                       | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbJbs                                                           | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbMercado                                                       | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbPicPay                                                        | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbProduto                                                       | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbUser                                                          | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ dbVendas                                                        | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ defaultdb                                                       | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ postgres://avnadmin:AVNS_GLyJdcZh-fKBxZTabiX@pg-68462-germinare | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ retrosound                                                      | avnadmin | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | 
+ template0                                                       | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | =c/postgres          +
+                                                                 |          |          |             |             |            |                 | postgres=CTc/postgres
+ template1                                                       | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |            | libc            | =c/postgres          +
+                                                                 |          |          |             |             |            |                 | postgres=CTc/postgres
+(16 rows)
+
