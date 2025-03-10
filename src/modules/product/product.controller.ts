@@ -24,7 +24,7 @@ export class ProductController {
     @Param('id') id: number,
     @Body() updateProductDto: UpdateProductDto,
   ) {
-    return await this.productService.update(id, updateProductDto);
+    return await this.productService.update(+id, updateProductDto);
   }
 
   @Get()
@@ -34,11 +34,11 @@ export class ProductController {
 
   @Get(':id')
   async findOne(@Param('id') id: number) {
-    return await this.productService.findOne(id);
+    return await this.productService.findOne(+id);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: number) {
-    return await this.productService.remove(id);
+    return await this.productService.remove(+id);
   }
 }
