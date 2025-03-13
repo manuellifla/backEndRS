@@ -27,12 +27,35 @@ export class ProductService {
   }
 
   async findAll() {
-    return this.prisma.product.findMany();
+    return this.prisma.product.findMany({
+      select: {
+        name: true,
+        category: {
+          select: {
+            name: true,
+          }
+        },
+        description: true,
+        price: true,
+        url_photo: true,
+      }
+    });
   }
 
   async findOne(id: number) {
     return this.prisma.product.findUnique({
       where: { id },
+      select: {
+        name: true,
+        category: {
+          select: {
+            name: true,
+          }
+        },
+        description: true,
+        price: true,
+        url_photo: true,
+      }
     });
   }
 

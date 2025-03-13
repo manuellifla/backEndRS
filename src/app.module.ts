@@ -8,5 +8,6 @@ import { UserModule } from './modules/user/user.module';
 @Module({
   imports: [ProductModule, CategoryModule, CartModule, UserModule],
   providers: [PrismaService],
+  
 })
 export class AppModule {}
