@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { AddItemDto, UpdateItemDto } from './dto/cart.dto';
 import { PrismaService } from 'prisma/prisma.service';
 
@@ -16,33 +16,39 @@ export class CartService {
   }
 
   // Adicionar item ao carrinho
-  async addItem(cartId: number, dto: AddItemDto) {
-    const { productId, quantity } = dto;
-    const product = await this.prisma.product.findUnique({
-      where: { id: productId },
-    });
-    if (!product || product.stock < quantity) {
-      throw new Error('Produto indisponível ou estoque insuficiente');
-    }
+  // Adicionar item ao carrinho
+async addItem(cartId: number, dto: AddItemDto) {
+  const { productId, quantity } = dto;
 
-    const cartItemId = this.prisma.cartItem.findFirst({
-      where: {
-        cartId: cartId,
-        productId: productId,
-      },
-      select: {
-        id: true,
-      },
-    });
+  // Verifica se o produto existe
+  const product = await this.prisma.product.findFirst({
+    where: { id: productId },
+  });
 
-    return this.prisma.cartItem.upsert({
-      where: {
-        id: (await cartItemId).id,
-      },
-      update: { quantity: { increment: quantity } },
-      create: { cartId, productId, quantity },
-    });
+  if (!product || product.stock < quantity) {
+    throw new BadRequestException('Produto indisponível ou estoque insuficiente');
   }
+
+  // Verifica se o item já existe no carrinho
+  const cartItem = await this.prisma.cartItem.findFirst({
+    where: {
+      cartId: cartId,
+      productId: productId,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  return this.prisma.cartItem.upsert({
+    where: {
+      id: cartItem ? cartItem.id : 0, // Use 0 para forçar uma falha no where caso o item não exista
+    },
+    update: { quantity: { increment: quantity } },
+    create: { cartId, productId, quantity },
+  });
+}
+
 
   // Atualizar a quantidade de um item no carrinho
   async updateItem(cartId: number, dto: UpdateItemDto) {

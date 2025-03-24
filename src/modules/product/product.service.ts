@@ -29,6 +29,7 @@ export class ProductService {
   async findAll() {
     return this.prisma.product.findMany({
       select: {
+        id:true,
         name: true,
         category: {
           select: {
@@ -38,6 +39,7 @@ export class ProductService {
         description: true,
         price: true,
         url_photo: true,
+        stock:true
       }
     });
   }
@@ -55,6 +57,7 @@ export class ProductService {
         description: true,
         price: true,
         url_photo: true,
+        stock:true
       }
     });
   }
