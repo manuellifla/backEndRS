@@ -21,17 +21,12 @@ export class UserService {
   async getUserByEmail(email: string) {
     const u = await this.prisma.users.findUnique({ where: { email } });
 
-    console.log(await this.prisma.users.findFirst({ where: { email } }));
-
     if (!u) {
-      console.log("b");
-      throw new BadRequestException("E-mail não encontrado.");
+      throw new BadRequestException('E-mail não encontrado.');
     }
-    
-    console.log("a");
-    return u;
-}
 
+    return u;
+  }
 
   async updateUser(id: number, dto: UpdateUserDto) {
     return this.prisma.users.update({
